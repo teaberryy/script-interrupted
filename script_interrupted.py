@@ -1,6 +1,8 @@
 import nmap, os, sys, time
 from scapy import *
 
+# heads up: script needs to run as sudo
+
 def getHosts():
     global victim_list, victim_dict
     victim_dict = {}
@@ -86,6 +88,15 @@ def juggle(router, victim):
 
 
 if __name__ == "__main__":
+    
+    # first check if was run as sudo
+    try:
+        os.rename('/etc/foo', '/etc/bar')
+    except IOError as e:
+        if (e[0] == errno.EPERM):
+            print >> sys.stderr, "Script needs to be run with sudo!"
+            sys.exit(1)
+    
     getHosts()
     victim = getVictim()
     router = getRouter()
