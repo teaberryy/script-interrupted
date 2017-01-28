@@ -1,5 +1,5 @@
 import nmap, os, sys, time
-from scapy.all import *
+from scapy import *
 
 def getHosts():
     global victim_list, victim_dict
