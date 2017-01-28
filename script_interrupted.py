@@ -32,7 +32,7 @@ def getInterface():
 
     slct_interface = interfaces[int(input("Please select an interface\n"))]
     # the above selects from the formatted list
-    return slct_interface
+    return (slct_interface -1)
 
 
 def getVictim():
